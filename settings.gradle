@@ -1,0 +1,4 @@
+rootProject.name = 'stocks'
+include 'stocks-market'
+include 'common'
+

@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id "org.liquibase.gradle" version "2.0.1" apply false
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+sourceCompatibility = JavaVersion.VERSION_13
+targetCompatibility = JavaVersion.VERSION_13
+
+dependencies {
+    implementation project(':common')
+    implementation 'org.liquibase:liquibase-core:3.10.3'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-r2dbc
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-r2dbc', version: '2.4.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.4.3'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.4.3'
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.3'
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+// https://mvnrepository.com/artifact/io.r2dbc/r2dbc-postgresql
+    implementation group: 'io.r2dbc', name: 'r2dbc-postgresql', version: '0.8.7.RELEASE'
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.19'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    // https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+    implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.3.5'
+
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+    useJUnitPlatform()
+}

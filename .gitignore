@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/common/build/
+/stocks-market/build/
+/stocks-market/build/classes/java/main/
