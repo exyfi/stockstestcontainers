@@ -2,13 +2,13 @@ package com.exyfi.stocks.market.service;
 
 import com.exyfi.stocks.market.domain.Stocks;
 import com.exyfi.stocks.market.dto.AddStocksRequestDto;
-import com.exyfi.stocks.market.dto.StocksResponseDto;
-import com.exyfi.stocks.market.dto.UpdateStocksRequestDto;
-import com.exyfi.stocks.market.exception.StockCompanyNotFoundException;
-import com.exyfi.stocks.market.exception.StocksIllegalRequestException;
+import com.exyfi.stocks.common.dto.StocksResponseDto;
+import com.exyfi.stocks.market.dto.UpdateStocksCountRequestDto;
+import com.exyfi.stocks.common.exception.StockCompanyNotFoundException;
+import com.exyfi.stocks.common.exception.StocksIllegalRequestException;
 import com.exyfi.stocks.market.repository.StocksRepository;
-import com.exyfi.stocks.market.dto.BuyStockRequestDto;
-import com.exyfi.stocks.market.dto.PaymentResponseDto;
+import com.exyfi.stocks.common.dto.BuyStockRequestDto;
+import com.exyfi.stocks.common.dto.PaymentResponseDto;
 import com.exyfi.stocks.market.dto.UpdateStocksPriceRequestDto;
 import com.exyfi.stocks.market.mapper.StocksResponseMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,13 +29,16 @@ public class StocksMarketService {
     private final StocksRepository stocksRepository;
 
     public Mono<StocksResponseDto> addStocks(AddStocksRequestDto dto) {
-        Mono<Stocks> savedStocks = stocksRepository.save(new Stocks(dto.getStocksName(),
-                dto.getMarketplaceProvider(), dto.getCounts(), dto.getStockPrice()));
-
-        return savedStocks.map(StocksResponseMapper::mapToStocksResponse);
+        try {
+            Mono<Stocks> savedStocks = stocksRepository.save(new Stocks(dto.getStocksName(),
+                    dto.getMarketplaceProvider(), dto.getCounts(), dto.getStockPrice()));
+            return savedStocks.map(StocksResponseMapper::mapToStocksResponse);
+        } catch (Exception e) {
+            throw new StocksIllegalRequestException(e.getMessage());
+        }
     }
 
-    public Mono<StocksResponseDto> updateStocksCount(UpdateStocksRequestDto dto) {
+    public Mono<StocksResponseDto> updateStocksCount(UpdateStocksCountRequestDto dto) {
         if (dto.getCounts() <= -1) {
             throw new StocksIllegalRequestException("Stock count can't be negative");
         }

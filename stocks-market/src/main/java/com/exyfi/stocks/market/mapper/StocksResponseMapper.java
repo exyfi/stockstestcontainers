@@ -1,7 +1,7 @@
 package com.exyfi.stocks.market.mapper;
 
 import com.exyfi.stocks.market.domain.Stocks;
-import com.exyfi.stocks.market.dto.StocksResponseDto;
+import com.exyfi.stocks.common.dto.StocksResponseDto;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

@@ -1,4 +1,4 @@
-package com.exyfi.stocks.market.exception;
+package com.exyfi.stocks.common.exception;
 
 /**
  * Exception throws in case given invalid properties for stocks.

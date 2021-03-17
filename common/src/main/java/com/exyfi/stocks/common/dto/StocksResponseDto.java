@@ -1,4 +1,4 @@
-package com.exyfi.stocks.market.dto;
+package com.exyfi.stocks.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

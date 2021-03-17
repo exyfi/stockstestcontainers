@@ -1,11 +1,11 @@
 package com.exyfi.stocks.market.controller;
 
 import com.exyfi.stocks.market.dto.AddStocksRequestDto;
-import com.exyfi.stocks.market.dto.StocksResponseDto;
-import com.exyfi.stocks.market.dto.UpdateStocksRequestDto;
+import com.exyfi.stocks.common.dto.StocksResponseDto;
+import com.exyfi.stocks.market.dto.UpdateStocksCountRequestDto;
 import com.exyfi.stocks.market.service.StocksMarketService;
-import com.exyfi.stocks.market.dto.BuyStockRequestDto;
-import com.exyfi.stocks.market.dto.PaymentResponseDto;
+import com.exyfi.stocks.common.dto.BuyStockRequestDto;
+import com.exyfi.stocks.common.dto.PaymentResponseDto;
 import com.exyfi.stocks.market.dto.UpdateStocksPriceRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class MarketController {
     }
 
     @PostMapping("/stock/update/count")
-    public Mono<StocksResponseDto> updateStocksCount(@RequestHeader("marketId") String marketId, @RequestBody UpdateStocksRequestDto dto) {
+    public Mono<StocksResponseDto> updateStocksCount(@RequestHeader("marketId") String marketId, @RequestBody UpdateStocksCountRequestDto dto) {
         log.info("accepted request: {}", dto);
         return stocksMarketService.updateStocksCount(dto);
     }
