@@ -1,5 +1,6 @@
 package com.exyfi.stocks.common.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +12,9 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PaymentResponseDto {
-    private Long stockId;
-    private String stocksName;
+public class UserSellStockRequestDto {
+    private String login;
+    private String stockName;
     private int count;
-    private BigDecimal stockPrice;
-    private BigDecimal totalPrice;
+    private BigDecimal orderPrice;
 }

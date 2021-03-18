@@ -1,4 +1,5 @@
 rootProject.name = 'stocks'
 include 'stocks-market'
 include 'common'
+include 'stocks-client'
 

@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PaymentResponseDto {
+public class SellReportResponseDto {
     private Long stockId;
-    private String stocksName;
-    private int count;
-    private BigDecimal stockPrice;
-    private BigDecimal totalPrice;
+    private Long userId;
+    private String stockName;
+    private BigDecimal soldPrice;
+    private int soldCount;
 }

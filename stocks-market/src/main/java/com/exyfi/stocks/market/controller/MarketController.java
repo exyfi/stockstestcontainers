@@ -1,5 +1,8 @@
 package com.exyfi.stocks.market.controller;
 
+import com.exyfi.stocks.common.dto.BaseResponse;
+import com.exyfi.stocks.common.dto.SellReportResponseDto;
+import com.exyfi.stocks.common.dto.UserSellStockRequestDto;
 import com.exyfi.stocks.market.dto.AddStocksRequestDto;
 import com.exyfi.stocks.common.dto.StocksResponseDto;
 import com.exyfi.stocks.market.dto.UpdateStocksCountRequestDto;
@@ -54,5 +57,12 @@ public class MarketController {
     public Mono<PaymentResponseDto> buyStock(@RequestBody BuyStockRequestDto dto) {
         log.info("accepted request: {}", dto);
         return stocksMarketService.buyStock(dto);
+    }
+
+    @PostMapping("/stocks/sell")
+    public Mono<SellReportResponseDto> sellStocks(@RequestBody UserSellStockRequestDto dto){
+        log.info("accepted request: {}", dto);
+        return stocksMarketService.sellStocks(dto);
+
     }
 }
