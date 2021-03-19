@@ -10,7 +10,6 @@ import com.exyfi.stocks.client.dto.UserStocksResponseDto;
 import com.exyfi.stocks.client.repository.UserRepository;
 import com.exyfi.stocks.client.repository.UserStocksRepository;
 import com.exyfi.stocks.common.dto.BaseResponse;
-import com.exyfi.stocks.common.dto.PaymentResponseDto;
 import com.exyfi.stocks.common.dto.StocksResponseDto;
 import com.exyfi.stocks.common.dto.UserSellStockRequestDto;
 import com.exyfi.stocks.common.exception.NotEnoughMoneyException;
@@ -22,16 +21,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -112,7 +106,8 @@ public class UserService {
                         .build());
     }
 
-    public Flux<StocksResponseDto> getAvailableStocks(){
+
+    public Flux<StocksResponseDto> getAvailableStocks() {
         return apiClient.getAllStocks();
     }
 
